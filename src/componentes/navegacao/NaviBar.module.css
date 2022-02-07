@@ -1,0 +1,9 @@
+.Geral {
+    display: flex;
+    width: 250px;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    border:1px solid rgb(189, 245, 226);
+}

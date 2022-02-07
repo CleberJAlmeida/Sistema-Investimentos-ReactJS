@@ -1,0 +1,19 @@
+.Geral {
+    background-color: rgb(143, 236, 143);
+    border: 0px;
+    padding: 2px;
+    height: 45px;
+    width: 150px;
+    margin: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.Geral:hover {
+    background-color: cadetblue;
+    color:azure;
+}

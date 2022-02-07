@@ -1,0 +1,35 @@
+.Geral {
+    background-color: rgb(178, 247, 178);
+    border: 0px;
+    padding: 2px;
+    height: 35px;
+    width: 100%;
+    margin: 1px;
+    border-bottom: 1px solid black;
+}
+
+.Geral:hover {
+    background-color: cadetblue;
+    color: azure;
+}
+
+.Area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.Texto {
+    margin-left: 5px;
+}
+
+.Imagem {
+    margin-right: 5px;
+}
+
+.Link {
+    text-decoration: none;
+    color:unset;
+}
