@@ -2,7 +2,7 @@
     background-color: rgb(178, 247, 178);
     border: 0px;
     padding: 2px;
-    height: 35px;
+    height: 30px;
     width: 100%;
     margin: 1px;
     border-bottom: 1px solid black;
@@ -23,6 +23,7 @@
 
 .Texto {
     margin-left: 5px;
+    font-size: 12px;
 }
 
 .Imagem {

@@ -5,5 +5,35 @@
     justify-content: center;
     text-align: center;
     flex-direction: column;
-    border:1px solid rgb(189, 245, 226);
+}
+
+.Esconder {
+    position: absolute;
+    left: -194px;
+}
+
+.Mostrar {
+    position: absolute;
+    left: 0px;
+}
+
+.Titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-weight: bold;
+    margin: 5px;
+}
+
+.BtMenu {
+    cursor: pointer;
+    margin-right: 2px;
+    padding: 5px;
+}
+
+.BtMenu:hover {
+    background-color: cadetblue;
+    color: azure;
 }
