@@ -21,7 +21,7 @@ function NaviBar() {
         </div>
     )
     function DeslocarMenu() {
-        local == Style.GeralEsconder ?
+        local === Style.GeralEsconder ?
             setLocal(Style.GeralMostrar)
             :
             setLocal(Style.GeralEsconder)
