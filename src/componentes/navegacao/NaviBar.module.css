@@ -1,18 +1,22 @@
-.Geral {
+.GeralEsconder {
     display: flex;
-    width: 250px;
-    flex-wrap: wrap;
-    justify-content: center;
-    text-align: center;
     flex-direction: column;
-}
-
-.Esconder {
+    justify-content: space-between;
+    position: absolute;
+    width: 225px;
+    height: 100%;
     position: absolute;
     left: -194px;
 }
 
-.Mostrar {
+
+.GeralMostrar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: absolute;
+    width: 225px;
+    height: 100%;
     position: absolute;
     left: 0px;
 }
@@ -21,10 +25,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    max-width: 100%;
     font-weight: bold;
-    margin: 5px;
+    margin: 1px;
+    margin-left: 5px;
+    background-color: white;
+    z-index: 1;
 }
 
 .BtMenu {
