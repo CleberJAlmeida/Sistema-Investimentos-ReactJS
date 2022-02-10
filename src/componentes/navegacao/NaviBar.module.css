@@ -19,6 +19,7 @@
     height: 100%;
     position: absolute;
     left: 0px;
+    z-index: 1;
 }
 
 .Titulo {
@@ -30,7 +31,6 @@
     margin: 1px;
     margin-left: 5px;
     background-color: white;
-    z-index: 1;
 }
 
 .BtMenu {

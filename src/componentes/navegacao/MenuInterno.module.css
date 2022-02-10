@@ -1,0 +1,30 @@
+.Geral {
+    background-color: rgb(178, 247, 178);
+    display: flex;
+    align-items: center;
+    width: 100px;
+    height: 25px;
+    justify-content: space-between;
+    font-size: 12px;
+    margin: 1px 2px;
+    cursor: pointer;
+}
+
+.Geral:hover {
+    background-color: cadetblue;
+    color: azure;
+}
+
+.Img {
+    margin-left: 5px;
+    font-size: 16px;
+}
+
+.Texto {
+    margin-right: 5px;
+}
+
+.Link {
+    text-decoration: none;
+    color: unset;
+}
