@@ -12,7 +12,7 @@ function Notas() {
                     Área de trabalho - Notas
                 </div>
                 <div>
-                    <MenuInterno link="/cadastro" img={<AiOutlinePlusCircle />} texto="Cadastrar" />
+                    <MenuInterno link="/cadastronotas" img={<AiOutlinePlusCircle />} texto="Cadastrar" />
                 </div>
             </div>
             <div className={Style.Conteiner}>

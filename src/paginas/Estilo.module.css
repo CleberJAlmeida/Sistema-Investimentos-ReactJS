@@ -1,5 +1,7 @@
 .Conteiner {
     display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
     position: relative;
     left: 35px;
     border: 1px solid black;

@@ -1,7 +1,7 @@
-import MenuInterno from "../componentes/navegacao/MenuInterno"
 import NaviBar from "../componentes/navegacao/NaviBar"
 import Style from './Estilo.module.css'
-import { AiOutlinePlusCircle } from 'react-icons/ai'
+import BlocoLarg240 from "../componentes/blocos/BlocoLarg240"
+
 function Carteira() {
     return (
         <>
@@ -10,12 +10,17 @@ function Carteira() {
                 <div className={Style.Titulo}>
                     Área de trabalho - Carteira
                 </div>
-                <div>
-                    <MenuInterno link="/cadastro" img={<AiOutlinePlusCircle />} texto="Cadastrar" />
+                <div>{/* colocar os botões de navegação nesta div */}
+
                 </div>
             </div>
             <div className={Style.Conteiner}>
-
+                <BlocoLarg240 Titulo="Ações" Informacao="Total investido:R$ 0,00" />
+                <BlocoLarg240 Titulo="Corretoras" Informacao="Total investido:R$ 0,00" />
+                <BlocoLarg240 Titulo="Notas Última Semana" Informacao="Total investido:R$ 0,00" />
+                <BlocoLarg240 Titulo="Mês Corrente" Informacao="Total investido:R$ 0,00" />
+                <BlocoLarg240 Titulo="Ano Corrente" Informacao="Total investido:R$ 0,00" />
+                <BlocoLarg240 Titulo="Total Geral" Informacao="Total investido:R$ 0,00" />
             </div>
         </>
     )
