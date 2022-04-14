@@ -6,6 +6,8 @@ import Sobre from '../paginas/Sobre'
 import Notas from '../paginas/Notas'
 import CadastroNotas from '../paginas/CadastroNotas'
 import CadastroCorretoras from '../paginas/CadastroCorretoras'
+import Perfil from '../paginas/Perfil'
+import Sair from '../paginas/Sair'
 
 function Rotas() {
     return (
@@ -17,6 +19,8 @@ function Rotas() {
             <Route path='/notas' element={<Notas />} />
             <Route path='/cadastrocorretoras' element={<CadastroCorretoras />} />
             <Route path='/cadastronotas' element={<CadastroNotas />} />
+            <Route path='/usuario' element={<Perfil />} />
+            <Route path='/sair' element={<Sair />} />
         </Routes>
     )
 }

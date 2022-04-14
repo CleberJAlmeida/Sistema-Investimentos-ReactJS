@@ -17,13 +17,11 @@ function NaviBar() {
             </div>
             <div>
                 <Elementos link="/usuario" texto="Usuário" imagem={<AiOutlineUser />} />
-                <Elementos link="" texto="Sair" imagem={<AiOutlineLogout />} onClick={Sair} />
+                <Elementos link="/sair" texto="Sair" imagem={<AiOutlineLogout />} />
             </div>
         </div>
     )
-    function Sair() {
 
-    }
     function DeslocarMenu() {
         local === Style.GeralEsconder ?
             setLocal(Style.GeralMostrar)
