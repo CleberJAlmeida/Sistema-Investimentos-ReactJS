@@ -3,8 +3,17 @@ import Style from './Estilo.module.css'
 import { AiOutlinePlusCircle } from "react-icons/ai"
 import MenuInterno from "../componentes/navegacao/MenuInterno"
 import BlocoLarg240 from "../componentes/blocos/BlocoLarg240"
+import Api from "../servicos/Api"
+import { useEffect, useState } from "react"
 
 function Corretoras() {
+    const [corretora, setCorretora] = useState([])
+    useEffect(() => {
+        Api.get("/corretoras/listar/")
+            .then(response => {
+                setCorretora(response.data.dados)
+            }).catch(error => console.log(error))
+    }, [])
     return (
         <>
             <NaviBar />
@@ -17,7 +26,10 @@ function Corretoras() {
                 </div>
             </div>
             <div className={Style.Conteiner}>
-            <BlocoLarg240 Titulo="Nome Corretora" Informacao="Razão Social" />
+                {corretora.map(dados => (
+                    <BlocoLarg240 key={dados?.id} Titulo={dados?.corretora} Informacao={dados?.razao_social} />
+                )
+                )}
             </div>
         </>
     )

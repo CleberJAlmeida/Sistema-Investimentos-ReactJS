@@ -18,7 +18,7 @@ function Rotas() {
             <Route path='/sobre' element={<Sobre />} />
             <Route path='/notas' element={<Notas />} />
             <Route path='/cadastrocorretoras' element={<CadastroCorretoras />} />
-            <Route path='/cadastronotas' element={<CadastroNotas />} />
+            {/*<Route path='/cadastronotas' element={<CadastroNotas />} /> esta dando erro, verificar*/}
             <Route path='/usuario' element={<Perfil />} />
             <Route path='/sair' element={<Sair />} />
         </Routes>
