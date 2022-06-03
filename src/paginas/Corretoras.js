@@ -9,7 +9,9 @@ import { useEffect, useState } from "react"
 function Corretoras() {
     const [corretora, setCorretora] = useState([])
     useEffect(async () => {
-        await Api.get("/corretoras/listar/")
+        const dados = JSON.parse(localStorage.getItem('token'));
+        const token = dados.token;
+        await Api.get(`/corretoras/listar/${token}`)
             .then(response => {
                 setCorretora(response.data.dados)
             }).catch(error => console.log(error))

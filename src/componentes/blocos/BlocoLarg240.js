@@ -21,8 +21,9 @@ function BlocoLarg240(props) {
         setOpen(false);
     };
     const ExcluirRegistro = async (tabela) => {
-        const url = "/" + tabela + "/deletar/" + props.Id
-
+        const dados = JSON.parse(localStorage.getItem('token'));
+        const token = dados.token;
+        const url = "/" + tabela + "/deletar/" + props.Id + "/" + token
         await Api.delete(url)
             .then(
                 window.location.reload()
