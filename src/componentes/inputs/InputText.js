@@ -10,6 +10,8 @@ function InputText(props) {
                     name={props.Name}
                     id={props.Name}
                     required={props.Requerido}
+                    value={props.Valor}
+                    onChange={props.Evento}
                 />
             </label>
         </div>

@@ -8,19 +8,22 @@ import CadastroNotas from '../paginas/CadastroNotas'
 import CadastroCorretoras from '../paginas/CadastroCorretoras'
 import Perfil from '../paginas/Perfil'
 import Sair from '../paginas/Sair'
+import { AutoContexto, Contextos } from '../servicos/Contextos'
 
 function Rotas() {
     return (
-        <Routes>
-            <Route path='/' element={<Login />} />
-            <Route path='/carteira' element={<Carteira />} />
-            <Route path='/corretoras' element={<Corretoras />} />
-            <Route path='/sobre' element={<Sobre />} />
-            <Route path='/notas' element={<Notas />} />
-            <Route path='/cadastrocorretoras' element={<CadastroCorretoras />} />
-            <Route path='/usuario' element={<Perfil />} />
-            <Route path='/sair' element={<Sair />} />
-        </Routes>
+        <AutoContexto>
+            <Routes>
+                <Route path='/' element={<Login />} />
+                <Route path='/carteira' element={<Carteira />} />
+                <Route path='/corretoras' element={<Corretoras />} />
+                <Route path='/sobre' element={<Sobre />} />
+                <Route path='/notas' element={<Notas />} />
+                <Route path='/cadastrocorretoras' element={<CadastroCorretoras />} />
+                <Route path='/usuario' element={<Perfil />} />
+                <Route path='/sair' element={<Sair />} />
+            </Routes>
+        </AutoContexto>
     )
 }
 export default Rotas

@@ -7,20 +7,32 @@ export const Contextos = createContext();
 
 //pega apenas o token no localstorage
 export const Usatoken = () => {
-    return localStorage.getItem("token") !== null
+    return (localStorage.getItem("token") !== null)
 };
+
+export const IdUser = () => {
+    const dados = JSON.parse(localStorage.getItem("user"))
+    const idUser = dados.id
+    return idUser;
+}
 
 export const AutoContexto = ({ children }) => {
     const navigate = useNavigate();
     const [user, setUser] = useState(null);
     const [carregando, setCarregando] = useState(true);
+    /* id auxiliar para passar parametros de uma pagina pra outra*/
+    const [variavelAuxiliar, setVariavelAuxiliar] = useState(null)
     useEffect(() => {
+        DadosUser();
+        setCarregando(false);
+    }, [])
+
+    const DadosUser = () => {
         const recuperaDadosUser = localStorage.getItem('user');
         if (recuperaDadosUser) {
             setUser(JSON.parse(recuperaDadosUser));
         }
-        setCarregando(false);
-    }, [])
+    }
 
     const Login = async (login, senha) => {
         //transfoma os dados pra json
@@ -40,11 +52,7 @@ export const AutoContexto = ({ children }) => {
                 }
                 localStorage.setItem("user", JSON.stringify(dadosUser));
                 localStorage.setItem("token", JSON.stringify(dadosToken));
-                setUser({
-                    id: response.data.dados.id,
-                    login: response.data.dados.login,
-                    nome: response.data.dados.nome,
-                })
+                setUser(dadosUser)
                 navigate("/carteira")
             })
             .catch(function (error) {
@@ -60,7 +68,7 @@ export const AutoContexto = ({ children }) => {
     };
     return (
         < Contextos.Provider value={
-            { autenticar: !!user, user, carregando, Login, Logout }
+            { autenticar: !!user, user, carregando, Login, Logout, variavelAuxiliar, setVariavelAuxiliar }
         }>
             {children}
         </Contextos.Provider>)

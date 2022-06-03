@@ -1,32 +1,59 @@
 import NaviBar from "../componentes/navegacao/NaviBar"
 import Style from './Estilo.module.css'
-import MenuInterno from "../componentes/navegacao/MenuInterno"
-import { AiOutlineCheckCircle } from 'react-icons/ai'
 import InputText from "../componentes/inputs/InputText"
-import { useState } from "react"
+import { useState, useContext, useEffect } from "react"
 import Api from "../servicos/Api"
-import { Navigate } from "react-router-dom"
 import Button from "../componentes/inputs/Button"
+import { Contextos } from "../servicos/Contextos"
+import { useNavigate } from "react-router-dom"
+
 
 function CadastroCorretoras() {
-    const [nomeCorretora, setNomeCorretora] = useState(null);
-    const [razaoSocial, setRazaoSocial] = useState(null);
-    const Cadastrar = (ev) => {
+    const { user, variavelAuxiliar, setVariavelAuxiliar } = useContext(Contextos)
+    const navigate = useNavigate()
+    const [nomeCorretora, setNomeCorretora] = useState("");
+    const [razaoSocial, setRazaoSocial] = useState("");
+    const [id, setId] = useState(null);
+
+    useEffect(() => {
+        if (variavelAuxiliar) {
+            setNomeCorretora(variavelAuxiliar.corretora)
+            setRazaoSocial(variavelAuxiliar.razao_social)
+            setId(variavelAuxiliar.id)
+        }
+    }, [])
+
+    const Cadastrar = async (ev) => {
         ev.preventDefault();
         const json = JSON.stringify({
             corretora: nomeCorretora,
-            razao_social: razaoSocial
+            razao_social: razaoSocial,
+            id_usuario: String(user.id)
         });
-        console.log(json)
-        Api.post("/corretoras/inserir/", json)
-            .then(Response => {
-                console.log(Response)
-                Navigate("/corretoras")
-            })
-            .catch(error => {
-                console.log("Erro: " + error)
-            }
-            )
+        //se existir um id setado, faz um update 
+        if (id) {
+            const url = "/corretoras/inserir/" + id
+            await Api.put(url, json)
+                .then((response) => {
+                    console.log(response)
+                    setVariavelAuxiliar(null)
+                    navigate("/corretoras")
+                })
+                .catch(erro => {
+                    console.log(erro)
+                })
+
+        }
+        else {//e se não estiver um id faz um insert
+            await Api.post("/corretoras/inserir/", json)
+                .then((response) => {
+                    console.log(response)
+                    navigate("/corretoras")
+                }).catch(erro => {
+                    console.log(erro)
+                })
+
+        }
     }
     return (
         <>
@@ -38,8 +65,8 @@ function CadastroCorretoras() {
                     </div>
 
                     <div>
-                        <Button tipo="submit" Texto="Salvar"/>
-                       
+                        <Button tipo="submit" Texto="Salvar" />
+
                     </div>
                 </div>
                 <div className={Style.Conteiner}>
@@ -49,7 +76,7 @@ function CadastroCorretoras() {
                         Name="corretora"
                         Requerido="Required"
                         Valor={nomeCorretora}
-                        Mudar={(e) => setNomeCorretora(e.target.value)}
+                        Evento={(e) => setNomeCorretora(e.target.value)}
                     />
                     <InputText
                         Tipo="Text"
@@ -57,7 +84,7 @@ function CadastroCorretoras() {
                         Name="razaosocial"
                         Requerido="Required"
                         Valor={razaoSocial}
-                        Mudar={(e) => setRazaoSocial(e.target.value)}
+                        Evento={(e) => setRazaoSocial(e.target.value)}
                     />
                 </div>
             </form>

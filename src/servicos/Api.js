@@ -1,23 +1,24 @@
 import axios from "axios";
-import { Usatoken } from "../servicos/Contextos";
+
 
 const Api = axios.create({
     headers: {
         "Access-Control-Allow-Origin": "*",
     },
-    baseURL: "http://sisinvestimentos.atwebpages.com",
+    baseURL: "http://localhost/ApiRest/"
+    //baseURL: "http://sisinvestimentos.atwebpages.com",
 });
 
 Api.interceptors.request.use((config) => {
-    if (Usatoken) {
+    const ver_existe_token = localStorage.getItem("token") !== null
+    if (ver_existe_token) {
         const dados = JSON.parse(localStorage.getItem('token'));
         const token = dados.token;
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
-}
-    , (error) => {
-        return Promise.reject(error);
-    });
+}, (error) => {
+    return Promise.reject("Erro:" + error);
+});
 
 export default Api;

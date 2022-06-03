@@ -27,7 +27,7 @@ function Corretoras() {
             </div>
             <div className={Style.Conteiner}>
                 {corretora.map(dados => (
-                    <BlocoLarg240 key={dados?.id} Titulo={dados?.corretora} Informacao={dados?.razao_social} />
+                    <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.corretora} Informacao={dados.razao_social} />
                 )
                 )}
             </div>

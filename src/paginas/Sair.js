@@ -7,7 +7,7 @@ import Style from './Estilo.module.css'
 function Sair() {
     const { Logout } = useContext(Contextos)
     function FazerLogout() {
-        console.log("Sair")
+        Logout()
     }
     return (
         <>

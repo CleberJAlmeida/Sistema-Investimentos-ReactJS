@@ -1,21 +1,32 @@
 .Geral {
-    display: flex;
-    flex-direction: column;
-    width: 240px;
-    border: 1px solid black;
-    box-shadow: 10px 5px 5px black;
-    margin: 8px;
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  border: 1px solid black;
+  box-shadow: 10px 5px 5px black;
+  margin: 8px;
 }
 
 .Titulo {
-    font-size: 14px;
-    font-weight: bold;
-    background-color: bisque;
-    border-bottom: 1px solid black;
-    padding: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: bisque;
+  border-bottom: 1px solid black;
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
 }
-
+.Titulo .TituloItem {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.Titulo .TituloItem button {
+  margin: 1px;
+  padding: 1px;
+}
 .Informacao {
-    font-size: 12px;
-    margin: 5px;
+  font-size: 12px;
+  margin: 5px;
 }
