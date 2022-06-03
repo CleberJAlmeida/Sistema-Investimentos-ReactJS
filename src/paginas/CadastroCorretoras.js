@@ -52,7 +52,6 @@ function CadastroCorretoras() {
                 }).catch(erro => {
                     console.log(erro)
                 })
-
         }
     }
     return (

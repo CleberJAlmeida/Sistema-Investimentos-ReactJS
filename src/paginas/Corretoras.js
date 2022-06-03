@@ -8,8 +8,8 @@ import { useEffect, useState } from "react"
 
 function Corretoras() {
     const [corretora, setCorretora] = useState([])
-    useEffect(() => {
-        Api.get("/corretoras/listar/")
+    useEffect(async () => {
+        await Api.get("/corretoras/listar/")
             .then(response => {
                 setCorretora(response.data.dados)
             }).catch(error => console.log(error))
@@ -26,10 +26,11 @@ function Corretoras() {
                 </div>
             </div>
             <div className={Style.Conteiner}>
-                {corretora.map(dados => (
-                    <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.corretora} Informacao={dados.razao_social} />
-                )
-                )}
+                {
+                    corretora ? corretora.map(dados => (
+                        <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.corretora} Informacao={dados.razao_social} />
+                    )) : "Sem dados na tabela"
+                }
             </div>
         </>
     )

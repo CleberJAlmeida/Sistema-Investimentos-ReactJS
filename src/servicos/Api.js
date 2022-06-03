@@ -5,8 +5,9 @@ const Api = axios.create({
     headers: {
         "Access-Control-Allow-Origin": "*",
     },
-    baseURL: "http://localhost/ApiRest/"
-    //baseURL: "http://sisinvestimentos.atwebpages.com",
+    //baseURL: "https://clsistema.000webhostapp.com/",
+     baseURL: "http://localhost/ApiRest/"
+    // baseURL: "http://sisinvestimentos.atwebpages.com/",
 });
 
 Api.interceptors.request.use((config) => {
