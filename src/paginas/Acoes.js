@@ -8,14 +8,15 @@ import BlocoLarg240 from '../componentes/blocos/BlocoLarg240'
 
 function Acoes() {
     const [acoes, setAcoes] = useState([])
-    useEffect(async () => {
-        /* const dados = JSON.parse(localStorage.getItem('token'));
- const token = dados.token;
- */
-        await Api.get("/acoes/listar")//não colocar a ultima barra
-            .then(response => {
-                setAcoes(response.data.dados)
-            }).catch(error => console.log(error))
+    useEffect(() => {
+        const acessar = async () => {
+            await Api.get("/acoes/listar")//não colocar a ultima barra
+                .then(response => {
+                    setAcoes(response.data.dados)
+                })
+                .catch(error => console.log(error))
+        }
+        acessar()
     }, [])
     return (
         <>
@@ -31,7 +32,7 @@ function Acoes() {
             <div className={Style.Conteiner}>
                 {
                     acoes ? acoes.map(dados => (
-                        <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.codigo} Informacao={dados.empresa} />
+                        <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.codigo} Informacao={dados.empresa + "\n- Setor Atuante: " + dados.setor} Tabela="acoes" />
                     )) : "Sem dados na tabela"
                 }
             </div>

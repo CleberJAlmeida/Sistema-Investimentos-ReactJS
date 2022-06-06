@@ -21,8 +21,6 @@ function BlocoLarg240(props) {
         setOpen(false);
     };
     const ExcluirRegistro = async (tabela) => {
-        const dados = JSON.parse(localStorage.getItem('token'));
-        const token = dados.token;
         const url = "/" + tabela + "/deletar/" + props.Id
         await Api.delete(url)
             .then(
@@ -38,8 +36,6 @@ function BlocoLarg240(props) {
     const carregaEdicao = (tabela) => {
         setVariavelAuxiliar({
             id: props.Id,
-            corretora: props.Titulo,
-            razao_social: props.Informacao
         })
         const url = "/cadastro" + tabela
         navigate(url)
@@ -63,7 +59,7 @@ function BlocoLarg240(props) {
                 </DialogContent>
                 <DialogActions>
                     <button onClick={handleClose}>Cancelar</button>
-                    <button onClick={() => { ExcluirRegistro("corretoras") }}>Excluir</button>
+                    <button onClick={() => { ExcluirRegistro(props.Tabela) }}>Excluir</button>
                 </DialogActions>
             </Dialog>
             <div className={Style.Geral}>
@@ -71,7 +67,7 @@ function BlocoLarg240(props) {
                     <span className={Style.TituloTexto}>{props.Titulo}</span>
                     <span className={Style.TituloItem}>
                         <span>
-                            <button onClick={() => { carregaEdicao("corretoras") }} >
+                            <button onClick={() => { carregaEdicao(props.Tabela) }} >
                                 <AiOutlineEdit />
                                 Editar
                             </button>

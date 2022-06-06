@@ -14,21 +14,28 @@ function CadastroCorretoras() {
     const [nomeCorretora, setNomeCorretora] = useState("");
     const [razaoSocial, setRazaoSocial] = useState("");
     const [id, setId] = useState(null);
+    const tabela = "corretoras"
 
     useEffect(() => {
+        const acessar = async (id) => {
+            await Api.get("/" + tabela + "/listar/" + id)//não colocar a ultima barra
+                .then(response => {
+                    const dados = response.data.dados
+                    dados.map(itens => {
+                        setNomeCorretora(itens.corretora)
+                        setRazaoSocial(itens.razao_social)
+                    })
+                    setId(id)
+                }).catch(error => console.log(error))
+        }
+
         if (variavelAuxiliar) {
-            setNomeCorretora(variavelAuxiliar.corretora)
-            setRazaoSocial(variavelAuxiliar.razao_social)
-            setId(variavelAuxiliar.id)
+            acessar(variavelAuxiliar.id)
         }
     }, [])
 
     const Cadastrar = async (ev) => {
         ev.preventDefault();
-        const tabela = "corretoras"
-        /* const dados = JSON.parse(localStorage.getItem('token'));
-         const token = dados.token;
-         */
         const json = JSON.stringify({
             corretora: nomeCorretora,
             razao_social: razaoSocial,

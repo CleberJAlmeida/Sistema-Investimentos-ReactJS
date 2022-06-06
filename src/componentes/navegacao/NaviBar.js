@@ -26,7 +26,7 @@ function NaviBar() {
                 <Elementos link="/sobre" texto="Sobre" imagem={<AiOutlineExclamationCircle />} />
             </div>
             <div>
-                <Elementos link="/usuario" texto={nomeUser} imagem={<AiOutlineUser />} />
+                <Elementos link="/perfil" texto={nomeUser} imagem={<AiOutlineUser />} />
                 <Elementos link="/sair" texto="Sair" imagem={<AiOutlineLogout />} />
             </div>
         </div>

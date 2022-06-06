@@ -15,22 +15,30 @@ function CadastroAcoes() {
     const [empresa, setEmpresa] = useState("");
     const [setor, setSetor] = useState("");
     const [id, setId] = useState(null);
+    const tabela = "acoes"
 
     useEffect(() => {
+        const acessar = async (id) => {
+            await Api.get("/" + tabela + "/listar/" + id)//não colocar a ultima barra
+                .then(response => {
+                    const dados = response.data.dados
+                    dados.map(itens => {
+                        setCodigoAcao(itens.codigo)
+                        setEmpresa(itens.empresa)
+                        setSetor(itens.setor)
+                    })
+                    setId(id)
+                }).catch(error => console.log(error))
+        }
+
         if (variavelAuxiliar) {
-            setCodigoAcao(variavelAuxiliar.codigo)
-            setEmpresa(variavelAuxiliar.empresa)
-            setSetor(variavelAuxiliar.setor)
-            setId(variavelAuxiliar.id)
+            acessar(variavelAuxiliar.id)
         }
     }, [])
 
+
     const Cadastrar = async (ev) => {
         ev.preventDefault();
-        const tabela = "acoes"
-        /*  const dados = JSON.parse(localStorage.getItem('token'));
-          const token = dados.token;
-          */
         const json = JSON.stringify({
             codigo: codigoAcao,
             empresa: empresa,

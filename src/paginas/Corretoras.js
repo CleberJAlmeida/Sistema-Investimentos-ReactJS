@@ -8,14 +8,14 @@ import { useEffect, useState } from "react"
 
 function Corretoras() {
     const [corretora, setCorretora] = useState([])
-    useEffect(async () => {
-        /* const dados = JSON.parse(localStorage.getItem('token'));
-         const token = dados.token;
-         */
-        await Api.get("/corretoras/listar")//não colocar a ultima barra
-            .then(response => {
-                setCorretora(response.data.dados)
-            }).catch(error => console.log(error))
+    useEffect(() => {
+        const acessar = async () => {
+            await Api.get("/corretoras/listar")//não colocar a ultima barra
+                .then(response => {
+                    setCorretora(response.data.dados)
+                }).catch(error => console.log(error))
+        }
+        acessar()
     }, [])
     return (
         <>
@@ -31,7 +31,7 @@ function Corretoras() {
             <div className={Style.Conteiner}>
                 {
                     corretora ? corretora.map(dados => (
-                        <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.corretora} Informacao={dados.razao_social} />
+                        <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.corretora} Informacao={dados.razao_social} Tabela="corretoras" />
                     )) : "Sem dados na tabela"
                 }
             </div>
