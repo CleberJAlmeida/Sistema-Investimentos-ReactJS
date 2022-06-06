@@ -9,9 +9,10 @@ import { useEffect, useState } from "react"
 function Corretoras() {
     const [corretora, setCorretora] = useState([])
     useEffect(async () => {
-        const dados = JSON.parse(localStorage.getItem('token'));
-        const token = dados.token;
-        await Api.get(`/corretoras/listar/${token}`)
+        /* const dados = JSON.parse(localStorage.getItem('token'));
+         const token = dados.token;
+         */
+        await Api.get("/corretoras/listar")//não colocar a ultima barra
             .then(response => {
                 setCorretora(response.data.dados)
             }).catch(error => console.log(error))

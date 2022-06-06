@@ -23,7 +23,7 @@ function BlocoLarg240(props) {
     const ExcluirRegistro = async (tabela) => {
         const dados = JSON.parse(localStorage.getItem('token'));
         const token = dados.token;
-        const url = "/" + tabela + "/deletar/" + props.Id + "/" + token
+        const url = "/" + tabela + "/deletar/" + props.Id
         await Api.delete(url)
             .then(
                 window.location.reload()

@@ -25,8 +25,10 @@ function CadastroCorretoras() {
 
     const Cadastrar = async (ev) => {
         ev.preventDefault();
-        const dados = JSON.parse(localStorage.getItem('token'));
-        const token = dados.token;
+        const tabela = "corretoras"
+        /* const dados = JSON.parse(localStorage.getItem('token'));
+         const token = dados.token;
+         */
         const json = JSON.stringify({
             corretora: nomeCorretora,
             razao_social: razaoSocial,
@@ -34,7 +36,7 @@ function CadastroCorretoras() {
         });
         //se existir um id setado, faz um update 
         if (id) {
-            const url = "/corretoras/editar/" + id + "/" + token
+            const url = "/" + tabela + "/editar/" + id
             await Api.put(url, json)
                 .then((response) => {
                     console.log(response)
@@ -47,7 +49,7 @@ function CadastroCorretoras() {
 
         }
         else {//e se não estiver um id faz um insert
-            await Api.post("/corretoras/inserir/" + token, json)
+            await Api.post("/" + tabela + "/inserir", json)
                 .then((response) => {
                     console.log(response)
                     navigate("/corretoras")

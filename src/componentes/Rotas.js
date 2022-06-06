@@ -4,11 +4,12 @@ import Corretoras from '../paginas/Corretoras'
 import Login from '../paginas/Login'
 import Sobre from '../paginas/Sobre'
 import Notas from '../paginas/Notas'
-import CadastroNotas from '../paginas/CadastroNotas'
 import CadastroCorretoras from '../paginas/CadastroCorretoras'
 import Perfil from '../paginas/Perfil'
 import Sair from '../paginas/Sair'
 import { AutoContexto, Contextos } from '../servicos/Contextos'
+import Acoes from "../paginas/Acoes"
+import CadastroAcoes from '../paginas/CadastroAcoes'
 
 function Rotas() {
     return (
@@ -17,9 +18,11 @@ function Rotas() {
                 <Route path='/' element={<Login />} />
                 <Route path='/carteira' element={<Carteira />} />
                 <Route path='/corretoras' element={<Corretoras />} />
+                <Route path='/cadastrocorretoras' element={<CadastroCorretoras />} />
+                <Route path='/acoes' element={<Acoes />} />
+                <Route path='/cadastroacoes' element={<CadastroAcoes />} />
                 <Route path='/sobre' element={<Sobre />} />
                 <Route path='/notas' element={<Notas />} />
-                <Route path='/cadastrocorretoras' element={<CadastroCorretoras />} />
                 <Route path='/usuario' element={<Perfil />} />
                 <Route path='/sair' element={<Sair />} />
             </Routes>
