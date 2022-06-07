@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Carteira from '../paginas/Carteira'
 import Corretoras from '../paginas/Corretoras'
 import Login from '../paginas/Login'
@@ -17,7 +17,6 @@ function Rotas() {
     const navigate = useNavigate()
     const Private = ({ children }) => {
         const { autenticar } = useContext(Contextos)
-        console.log(String(autenticar))
         if (!autenticar) {
             navigate("/")
         }

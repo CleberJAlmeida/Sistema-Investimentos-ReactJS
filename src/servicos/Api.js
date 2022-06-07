@@ -2,8 +2,8 @@ import axios from "axios";
 
 const Api = axios.create({
     //baseURL: "https://clsistema.000webhostapp.com/",
-    baseURL: "http://localhost/ApiRest/"
-    //baseURL: "http://sisinvestimentos.atwebpages.com/",
+   // baseURL: "http://localhost/ApiRest/"
+    baseURL: "http://sisinvestimentos.atwebpages.com/",
 });
 
 Api.interceptors.request.use((config) => {

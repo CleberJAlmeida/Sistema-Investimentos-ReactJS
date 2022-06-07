@@ -23,8 +23,9 @@ function BlocoLarg240(props) {
     const ExcluirRegistro = async (tabela) => {
         const url = "/" + tabela + "/deletar/" + props.Id
         await Api.delete(url)
-            .then(
+            .then(Response => {
                 window.location.reload()
+            }
             )
             .catch(erro => {
                 console.log(erro)

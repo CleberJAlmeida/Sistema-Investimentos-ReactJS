@@ -32,7 +32,7 @@ function Acoes() {
             <div className={Style.Conteiner}>
                 {
                     acoes ? acoes.map(dados => (
-                        <BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.codigo} Informacao={dados.empresa + "\n- Setor Atuante: " + dados.setor} Tabela="acoes" />
+                        < BlocoLarg240 key={dados.id} Id={dados.id} Titulo={dados.codigo} Informacao={dados.empresa + "\n- Setor Atuante: " + dados.setor} Tabela="acoes" />
                     )) : "Sem dados na tabela"
                 }
             </div>

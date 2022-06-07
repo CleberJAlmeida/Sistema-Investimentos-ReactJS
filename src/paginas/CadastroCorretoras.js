@@ -20,11 +20,9 @@ function CadastroCorretoras() {
         const acessar = async (id) => {
             await Api.get("/" + tabela + "/listar/" + id)//não colocar a ultima barra
                 .then(response => {
-                    const dados = response.data.dados
-                    dados.map(itens => {
-                        setNomeCorretora(itens.corretora)
-                        setRazaoSocial(itens.razao_social)
-                    })
+                    const dados = response.data.dados[0]
+                    setNomeCorretora(dados.corretora)
+                    setRazaoSocial(dados.razao_social)
                     setId(id)
                 }).catch(error => console.log(error))
         }
@@ -46,7 +44,6 @@ function CadastroCorretoras() {
             const url = "/" + tabela + "/editar/" + id
             await Api.put(url, json)
                 .then((response) => {
-                    console.log(response)
                     setVariavelAuxiliar(null)
                     navigate("/corretoras")
                 })
@@ -58,7 +55,6 @@ function CadastroCorretoras() {
         else {//e se não estiver um id faz um insert
             await Api.post("/" + tabela + "/inserir", json)
                 .then((response) => {
-                    console.log(response)
                     navigate("/corretoras")
                 }).catch(erro => {
                     console.log(erro)

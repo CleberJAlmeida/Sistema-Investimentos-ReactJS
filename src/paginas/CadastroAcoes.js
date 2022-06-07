@@ -21,12 +21,10 @@ function CadastroAcoes() {
         const acessar = async (id) => {
             await Api.get("/" + tabela + "/listar/" + id)//não colocar a ultima barra
                 .then(response => {
-                    const dados = response.data.dados
-                    dados.map(itens => {
-                        setCodigoAcao(itens.codigo)
-                        setEmpresa(itens.empresa)
-                        setSetor(itens.setor)
-                    })
+                    const dados = response.data.dados[0]
+                    setCodigoAcao(dados.codigo)
+                    setEmpresa(dados.empresa)
+                    setSetor(dados.setor)
                     setId(id)
                 }).catch(error => console.log(error))
         }
@@ -50,7 +48,6 @@ function CadastroAcoes() {
             const url = "/" + tabela + "/editar/" + id
             await Api.put(url, json)
                 .then((response) => {
-                    console.log(response)
                     setVariavelAuxiliar(null)
                     navigate("/acoes")
                 })
@@ -62,7 +59,6 @@ function CadastroAcoes() {
         else {//e se não estiver um id faz um insert
             await Api.post("/" + tabela + "/inserir", json)
                 .then((response) => {
-                    console.log(response)
                     navigate("/acoes")
                 }).catch(erro => {
                     console.log(erro)
@@ -80,7 +76,6 @@ function CadastroAcoes() {
 
                     <div>
                         <Button tipo="submit" Texto="Salvar" />
-
                     </div>
                 </div>
                 <div className={Style.Conteiner}>
